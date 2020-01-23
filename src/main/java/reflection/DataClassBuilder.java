@@ -2,6 +2,7 @@ package reflection;
 
 
 import exception.AnnotationException;
+import metadata.MetaDataSchema;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -27,6 +28,11 @@ public class DataClassBuilder {
     public void bulidConfig () throws AnnotationException {
         annotationService.checkAllAnnotation(checkedClass);
         metaDataService.createMetaDataSchema(checkedClass);
+
+        for (Class<?> checkedClass2: checkedClass
+             ) {
+            MetaDataSchema.printClassMap(checkedClass2);
+        }
     }
 
 

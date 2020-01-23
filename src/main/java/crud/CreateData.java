@@ -11,7 +11,7 @@ import java.sql.*;
 
 public class CreateData {
 
-    public Object createInstanseFromRecordById(Class<?> classobj, int id) throws SQLException, IllegalAccessException, InstantiationException {
+    public Object createInstanceFromRecordById(Class<?> classobj, int id) throws SQLException, IllegalAccessException, InstantiationException {
         Object object = classobj.newInstance();
         TableData tableData;
         String tableName;

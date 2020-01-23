@@ -2,7 +2,6 @@ package model;
 
 import annotation.*;
 
-@EntitySoft
 @TableSoft (name = "autos")
 public class Auto {
 

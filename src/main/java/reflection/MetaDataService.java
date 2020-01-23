@@ -186,15 +186,6 @@ public class MetaDataService {
     }
 
 
-    /**
-     * Проверка на аннотацию @ExcludeSoft
-     * Эта аннотация исключает поле из схемы маппинга
-     *
-     * @see annotation.ExcludeSoft
-     */
-    private boolean isExcludeField(Field field) {
-        return field.getDeclaredAnnotation(ExcludeSoft.class) != null;
-    }
 
     /**
      * Проверка на аннотацию @ForeignKeySoft

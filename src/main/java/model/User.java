@@ -4,7 +4,6 @@ import annotation.*;
 
 import java.util.List;
 
-@EntitySoft
 @TableSoft (name = "users")
 public class User {
 
@@ -16,7 +15,6 @@ public class User {
     @ColumnSoft()
     private String name;
 
-    @ExcludeSoft
     private int ageR;
 
     @ColumnSoft(name = "age")

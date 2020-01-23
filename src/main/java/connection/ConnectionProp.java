@@ -29,7 +29,7 @@ public class ConnectionProp {
 
     public static synchronized ConnectionProp getInstance() {
         if (connectionProp == null) {
-            connectionProp = new ConnectionProp();
+            connectionProp = new ConnectionProp();//TODO move to properties
         }
         return connectionProp;
     }

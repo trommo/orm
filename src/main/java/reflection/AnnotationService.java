@@ -21,20 +21,8 @@ public class AnnotationService {
     public void checkAllAnnotation(Set<Class<?>> listClassAnnotaition) throws AnnotationException {
         for (Class<?> classAnnotation : listClassAnnotaition
         ) {
-            checkEntityAnnotation(classAnnotation);
             checkTableAnnotation(classAnnotation);
             checkField(classAnnotation);
-        }
-    }
-
-    /**
-     * Проверка на наличие анностации EntitySoft
-     *
-     * @see EntitySoft
-     */
-    private void checkEntityAnnotation(Class<?> classEntity) throws AnnotationException {
-        if (classEntity.getAnnotation(EntitySoft.class) == null) {
-            throw new AnnotationException("Class '" + classEntity.getSimpleName() + "' does not have annotation @EntitySoft");
         }
     }
 
@@ -54,10 +42,8 @@ public class AnnotationService {
      * Пока только проверка на наличие полей
      * По идее поле может быть без аннотации, если оно конвертируемого типа
      * и его имя совпадает с названием колонки.
-     * *
-     *
+     * *     *
      * @see annotation.ColumnSoft
-     * @see annotation.ExcludeSoft
      * @see annotation.IdSoft
      * @see annotation.ManyToOneSoft
      * @see annotation.OneToManySoft
