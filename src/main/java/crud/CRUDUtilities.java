@@ -13,6 +13,7 @@ import java.util.StringJoiner;
 public class CRUDUtilities {
 
     /**
+     *  Method returns string of column names of database table
      *
      * @param linkedList    list of column names of database table
      * @return              string of column names of database table
@@ -28,6 +29,7 @@ public class CRUDUtilities {
     }
 
     /**
+     *  Method returns string of column names values from database table
      *
      * @param linkedList    list of column names values from database table
      * @return              string of column names values from database table
