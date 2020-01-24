@@ -23,7 +23,8 @@ import java.util.List;
 public class CreateData {
 
     /**
-     *
+     *  Method returns object of specified class from database data
+     * 
      * @param classobj  object class
      * @param id        object id in database
      * @return          object of specified class from database data
@@ -58,7 +59,8 @@ public class CreateData {
     }
 
     /**
-     *
+     *  Method returns object of specified class from database data
+     * 
      * @param classobj      object class
      * @param columnName    object field column name in database table
      * @param value         object field column name value in database table
@@ -88,7 +90,8 @@ public class CreateData {
     }
 
     /**
-     *
+     *  Method returns resultset from database data
+     * 
      * @param classobj      object class
      * @param columnName    object field column name in database table
      * @param value         object field column name value in database table
@@ -119,7 +122,8 @@ public class CreateData {
     }
 
     /**
-     *
+     * Method returns the object of specified class from database data
+     * 
      * @param classobj      object class
      * @param id            object id in database
      * @return              object of specified class from database data
@@ -154,11 +158,12 @@ public class CreateData {
     }
 
     /**
-     *
+     *  Method returns list of data obtained by foreign key
+     * 
      * @param classobj      object class
      * @param columnName    object field column name in database table
      * @param value         object field column name value in database table
-     * @return
+     * @return              list of data obtained by foreign key
      * @throws SQLException
      * @throws IllegalAccessException
      * @throws InstantiationException
