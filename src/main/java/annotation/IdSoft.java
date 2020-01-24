@@ -6,7 +6,9 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Аннотация для первичного ключа
+ * Primary key annotation
+ * 
+ * @author Anna Severyna
  */
 
 
