@@ -24,10 +24,9 @@ public class User {
     @ColumnSoft(name = "city")
     private String city;
 
-    @OneToManySoft()
+    @OneToManySoft(mappedBy = "user")
     @ForeignKeySoft
     private List<Auto> autos;
-
 
     public User() {
     }
@@ -81,6 +80,7 @@ public class User {
                 ", name='" + name + '\'' +
                 ", age=" + age +
                 ", city='" + city + '\'' +
+                ", autos=" + autos +
                 '}';
     }
 }

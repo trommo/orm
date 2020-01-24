@@ -11,5 +11,5 @@ import java.lang.annotation.Target;
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface OneToManySoft {
-    String mappedBy() default "";
+    String mappedBy();
 }

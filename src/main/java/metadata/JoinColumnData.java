@@ -4,6 +4,8 @@ public class JoinColumnData implements DataHolder {
     private String nameField;
     private String nameColumn;
     private String type;
+    private boolean check = false;
+    private Class<?> typeClass;
     private String relation;
 
     public JoinColumnData(String nameField, String type) {
@@ -38,6 +40,14 @@ public class JoinColumnData implements DataHolder {
         this.nameColumn = nameColumn;
     }
 
+    public boolean isCheck() {
+        return check;
+    }
+
+    public void setCheck(boolean check) {
+        this.check = check;
+    }
+
     @Override
     public String getType() {
         return type;
@@ -46,6 +56,16 @@ public class JoinColumnData implements DataHolder {
     @Override
     public void setType(String type) {
         this.type = type;
+    }
+
+    @Override
+    public Class<?> getTypeClass() {
+        return typeClass;
+    }
+
+    @Override
+    public void setTypeClass(Class<?> typeClass) {
+        this.typeClass = typeClass;
     }
 
     public String getRelation() {
@@ -62,6 +82,8 @@ public class JoinColumnData implements DataHolder {
                 "nameField='" + nameField + '\'' +
                 ", nameColumn='" + nameColumn + '\'' +
                 ", type='" + type + '\'' +
+                ", check=" + check +
+                ", typeClass=" + typeClass +
                 ", relation='" + relation + '\'' +
                 '}';
     }

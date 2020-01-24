@@ -6,6 +6,8 @@ import metadata.*;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -80,6 +82,7 @@ public class MetaDataService {
     private void addIdField(Field field) {
         this.idData = new IdData(field.getName(), field.getType().getSimpleName());
         idData.setNameColumn(setColumnName(field, idData));
+        idData.setTypeClass(field.getType());
     }
 
 
@@ -89,6 +92,7 @@ public class MetaDataService {
     private void addColumnFields(Field field) {
         FieldData fieldData = new FieldData(field.getName(), field.getType().getSimpleName());
         fieldData.setNameColumn(setColumnName(field, fieldData));
+        fieldData.setTypeClass(field.getType());
         fieldsDataList.add(fieldData);
     }
 
@@ -107,6 +111,7 @@ public class MetaDataService {
             columnName = joinFieldData.getNameField().toLowerCase();
         }
         joinFieldData.setNameColumn(columnName);
+        joinFieldData.setTypeClass(field.getType());
         joinColumnDataList.add(joinFieldData);
     }
 
@@ -116,12 +121,17 @@ public class MetaDataService {
     private void addForeignKeyFields(Field field) throws AnnotationException {
         String relation = getRelation(field);
         ForeignKeyData foreignKeyData = new ForeignKeyData(field.getName(), field.getType().getSimpleName(), relation);
-        String columnName = field.getDeclaredAnnotation(ForeignKeySoft.class).name();
+        String columnName = field.getDeclaredAnnotation(OneToManySoft.class).mappedBy();
         if (columnName.equals("")) {
             columnName = foreignKeyData.getNameField().toLowerCase();
         }
         foreignKeyData.setNameColumn(columnName);
-
+        ParameterizedType genericFieldType = (ParameterizedType) field.getGenericType();
+        Type[] fieldArgTypes = genericFieldType.getActualTypeArguments();
+        for (Type fieldArgType : fieldArgTypes) {
+            Class<?> fieldArgClass = (Class<?>) fieldArgType;
+            foreignKeyData.setTypeClass(fieldArgClass);
+        }
         foreignKeyDataList.add(foreignKeyData);
     }
 
@@ -184,7 +194,6 @@ public class MetaDataService {
     private boolean isColumnInBase(Field field) {
         return field.getDeclaredAnnotation(ColumnSoft.class) != null;
     }
-
 
 
     /**

@@ -12,7 +12,8 @@ import java.sql.*;
 
 public class CRUDOperations {
 
-    public void deleteById(Object object, Integer id) throws SQLException {
+    public void deleteById(Class<?> classobj, Integer id) throws SQLException, IllegalAccessException, InstantiationException {
+        Object object = classobj.newInstance();
         PreparedStatement preparedStatement = null;
         Connection connection = null;
         TableData tableData;

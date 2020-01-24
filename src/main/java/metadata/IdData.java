@@ -3,6 +3,7 @@ package metadata;
 public class IdData implements DataHolder {
     private String nameField;
     private String type;
+    private Class<?> typeClass;
     private String idGenerate;
     private String nameColumn;
 
@@ -51,6 +52,16 @@ public class IdData implements DataHolder {
         this.type = type;
     }
 
+    @Override
+    public Class<?> getTypeClass() {
+        return typeClass;
+    }
+
+    @Override
+    public void setTypeClass(Class<?> typeClass) {
+        this.typeClass = typeClass;
+    }
+
     public String getIdGenerate() {
         return idGenerate;
     }
@@ -64,6 +75,7 @@ public class IdData implements DataHolder {
         return "IdData{" +
                 "nameField='" + nameField + '\'' +
                 ", type='" + type + '\'' +
+                ", typeClass=" + typeClass +
                 ", idGenerate='" + idGenerate + '\'' +
                 ", nameColumn='" + nameColumn + '\'' +
                 '}';

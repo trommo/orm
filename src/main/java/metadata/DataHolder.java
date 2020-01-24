@@ -7,4 +7,6 @@ public interface DataHolder {
     void setNameColumn(String nameColumn);
     String getType();
     void setType(String type);
+    Class<?> getTypeClass();
+    void setTypeClass(Class<?> typeClass);
 }

@@ -6,7 +6,8 @@ import java.sql.SQLException;
 
 public class TypeConverter {
 
-    public void convertDataSqlToJava(Object object, Field field, ResultSet resultSet, Class<?>fieldType, int colNumber) {
+    public void convertDataSqlToJava(Object object, Field field, ResultSet resultSet, int colNumber) {
+        Class<?>fieldType = field.getType();
         int columnTypeNumber = 0;
         try {
             columnTypeNumber = resultSet.getMetaData().getColumnType(colNumber);

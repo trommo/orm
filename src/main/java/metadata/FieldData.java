@@ -8,6 +8,7 @@ package metadata;
 public class FieldData implements DataHolder{
     private String nameField;
     private String type;
+    private Class<?> typeClass;
     private String annotation;
     private String nameColumn;
 
@@ -40,6 +41,13 @@ public class FieldData implements DataHolder{
         this.type = type;
     }
 
+    public Class<?> getTypeClass() {
+        return typeClass;
+    }
+
+    public void setTypeClass(Class<?> typeClass) {
+        this.typeClass = typeClass;
+    }
 
     public String getNameColumn() {
         return nameColumn;
@@ -59,13 +67,12 @@ public class FieldData implements DataHolder{
 
     @Override
     public String toString() {
-        return "FieldData {" +
+        return "FieldData{" +
                 "nameField='" + nameField + '\'' +
-                ", nameColumn='" + nameColumn + '\'' +
                 ", type='" + type + '\'' +
+                ", typeClass=" + typeClass +
                 //", annotation='" + annotation + '\'' +
+                ", nameColumn='" + nameColumn + '\'' +
                 '}';
     }
-
-
 }

@@ -29,10 +29,10 @@ public class DataClassBuilder {
         annotationService.checkAllAnnotation(checkedClass);
         metaDataService.createMetaDataSchema(checkedClass);
 
-        for (Class<?> checkedClass2: checkedClass
+/*        for (Class<?> checkedClass2: checkedClass
              ) {
             MetaDataSchema.printClassMap(checkedClass2);
-        }
+        }*/
     }
 
 

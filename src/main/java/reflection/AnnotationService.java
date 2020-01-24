@@ -38,16 +38,8 @@ public class AnnotationService {
     }
 
     /**
-     * Проверка на наличие аннотаций и Field
-     * Пока только проверка на наличие полей
-     * По идее поле может быть без аннотации, если оно конвертируемого типа
-     * и его имя совпадает с названием колонки.
-     * *     *
-     * @see annotation.ColumnSoft
-     * @see annotation.IdSoft
-     * @see annotation.ManyToOneSoft
-     * @see annotation.OneToManySoft
-     * @see annotation.OneToOneSoft
+     * Проверка на наличие полей в классе
+     * *
      */
 
     private void checkField(Class<?> classField) throws AnnotationException {

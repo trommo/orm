@@ -4,7 +4,10 @@ import connection.DbConnection;
 import exception.AnnotationException;
 import exception.OrmSoftException;
 import metadata.FieldData;
+import metadata.JoinColumnData;
 import metadata.MetaDataSchema;
+import metadata.TableData;
+import model.User;
 
 import java.lang.reflect.Field;
 import java.sql.*;
@@ -13,11 +16,12 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class UpdateData {
-    public void updateRecord(Object object) throws SQLException, IllegalAccessException {
+    public void updateRecord(Object object) throws SQLException, IllegalAccessException, NoSuchFieldException, InstantiationException {
         List<String> columnName = new LinkedList<>();
         List<String> columnValue = new LinkedList<>();
         List<FieldData> fieldDataList;
         Class<?> classobj = object.getClass();
+        TableData tableData = MetaDataSchema.getTableData(object);
 
         try {
             fieldDataList = MetaDataSchema.getClassMap().get(classobj).getFieldDataList();
@@ -38,6 +42,25 @@ public class UpdateData {
             field.setAccessible(true);
             columnName.add(fieldData.getNameColumn());
             columnValue.add(field.get(object).toString());
+        }
+
+        if (tableData.getJoinColumnDataList() != null) {
+            for (JoinColumnData joinVolumnData : tableData.getJoinColumnDataList()
+            ) {
+                String fieldName = joinVolumnData.getNameField();
+                String nameColumn = joinVolumnData.getNameColumn();
+                Class<?> classObj2 = joinVolumnData.getTypeClass();
+                String nameIdField = MetaDataSchema.getIdName(classObj2.newInstance());
+                Field fieldIdFK = classObj2.getDeclaredField(nameIdField);
+                fieldIdFK.setAccessible(true);
+                Field fieldRel = object.getClass().getDeclaredField(fieldName);
+                fieldRel.setAccessible(true);
+                Object objectRel = fieldRel.get(object);
+                fieldIdFK.getInt(objectRel);
+                int id = fieldIdFK.getInt(objectRel);
+                columnName.add(nameColumn);
+                columnValue.add(Integer.toString(id));
+            }
         }
 
 

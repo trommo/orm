@@ -30,7 +30,7 @@ public class DbConnection {
             e.printStackTrace();
         }
         if (connection != null) {
-            System.out.println("You are successfully connected to the database now!");
+            //System.out.println("You are successfully connected to the database now!");
         } else {
             System.out.println("Failed connection");
         }
